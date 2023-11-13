@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "beatport api client"
-version = "0.1.0"
+version = "4.0.0"
 description = "Beatport API client"
 authors = ["Félix Voituret <contact@mazard-records.com>"]
 readme = "README.md"

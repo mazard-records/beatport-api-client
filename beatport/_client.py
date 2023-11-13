@@ -30,17 +30,17 @@ class BaseProxy(Generic[ModelClass]):
         return getattr(self._model, attr)
 
 
-class BeatportPlaylistProxy(BaseProxy):
+class BeatportPlaylistProxy(BaseProxy[BeatportPlaylist]):
     """ """
 
     def add(self, track_ids: list[int]) -> None:
-        endpoint = f"/api/v4/my/playlists/{self.id}/tracks/bulk"
+        endpoint = f"/api/v4/my/playlists/{self._model.id}/tracks/bulk"
         payload = {"track_ids": track_ids}
         response = self._transport.post(endpoint, json=payload)
         response.raise_for_status()
 
     def remove(self, track_id: int) -> None:
-        endpoint = f"/api/v4/my/playlists/{self.id}/tracks/{track_id}"
+        endpoint = f"/api/v4/my/playlists/{self._model.id}/tracks/{track_id}"
         response = self._transport.delete(endpoint)
         response.raise_for_status()
 
